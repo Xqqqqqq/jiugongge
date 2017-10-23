@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>九宫格</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="JiuGongGe.css">
+</head>
+<body>
+<div id="app">
+    <div id="head">
+        <span id="head1" @click="change1" :style="color1">
+            <img :src="logo1" alt="">
+        </span>
+        <span id="head2" @click="change2" :style="color2">
+            <img :src="logo2" alt="">
+        </span>
+    </div>
+    <div id="content" v-if="isShow">
+        <!--id唯一-->
+        <span class="divs" v-for="array in arrays">
+            <a :href="array.url">
+                <img class="imgs" :src="array.image" alt="" :style="img1">
+            </a>
+        </span>
+    </div>
+
+    <div id="content2" v-if="isSee">
+        <div class="divss" v-for="array2 in arrays">
+            <a :href="array2.url">
+                <img :src="array2.image" alt="" class="imgss" :style="img2">
+            </a>
+            <a :href="array2.url">
+                <div class="titles">{{array2.title}}</div>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            color1:{
+                backgroundColor:'rgba(231,231,231,0.2)',
+            },
+            color2:{
+                backgroundColor:"rgba(231,231,231,0.2)",
+            },
+            logo1:'list.png',
+            logo2:'grade.png',
+            img1:{
+                width:186 +'px',
+                height:150 +'px',
+                marginLeft:3 +'px'
+            },
+            img2:{
+                width:110 +'px',
+                height:90 +'px',
+            },
+            arrays:[{
+                title: "What You Need To Know About CSS Variables",
+                url: "http://tutorialzine.com/2016/03/what-you-need-to-know-about-css-variables/",
+                image: 'https://tutorialzine.com/media/2016/03/css-variables.jpg'
+                },
+                {
+                    title: "Freebie: 4 Great Looking Pricing Tables",
+                    url: "http://tutorialzine.com/2016/02/freebie-4-great-looking-pricing-tables/",
+                    image: 'https://tutorialzine.com/media/2016/02/great-looking-pricing-tables.jpg'
+                },
+                {
+                    title: "20 Interesting JavaScript and CSS Libraries for February 2016",
+                    url: "http://tutorialzine.com/2016/02/20-interesting-javascript-and-css-libraries-for-february-2016/",
+                    image: 'https://tutorialzine.com/media/2016/02/interesting-resources-february.jpg'
+                },
+                {
+                    title: "Quick Tip: The Easiest Way To Make Responsive Headers",
+                    url: "http://tutorialzine.com/2016/02/quick-tip-easiest-way-to-make-responsive-headers/",
+                    image: 'https://tutorialzine.com/media/2016/02/quick-tip-responsive-headers.png'
+                },
+                {
+                    title: "Learn SQL In 20 Minutes",
+                    url: "http://tutorialzine.com/2016/01/learn-sql-in-20-minutes/",
+                    image: 'https://tutorialzine.com/media/2016/01/learn-sql-20-minutes.png'
+                },
+                {
+                    title: "Creating Your First Desktop App With HTML, JS and Electron",
+                    url: "http://tutorialzine.com/2015/12/creating-your-first-desktop-app-with-html-js-and-electron/",
+                    image: 'https://tutorialzine.com/media/2015/12/creating-your-first-desktop-app-with-electron.png'
+                }],
+            isShow:true,
+            isSee:false
+        },
+        methods:{
+            change1:function () {
+                this.isShow=false;
+                this.isSee=true;
+                this.$data.color1.backgroundColor ="pink";
+                this.$data.color2.backgroundColor ="rgba(231,231,231,0.2)";
+            },
+            change2:function () {
+                this.isShow=true;
+                this.isSee=false;
+                this.$data.color2.backgroundColor ="pink";
+                this.$data.color1.backgroundColor ="rgba(231,231,231,0.2)";
+            }
+        }
+    })
+</script>
+</body>
+</html>
