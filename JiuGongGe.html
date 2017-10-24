@@ -16,7 +16,7 @@
             <img :src="logo2" alt="">
         </span>
     </div>
-    <div id="content" v-if="isShow">
+    <div id="content" v-show="isShow">
         <!--id唯一-->
         <span class="divs" v-for="array in arrays">
             <a :href="array.url">
@@ -25,7 +25,7 @@
         </span>
     </div>
 
-    <div id="content2" v-if="isSee">
+    <div id="content2" v-show="isSee">
         <div class="divss" v-for="array2 in arrays">
             <a :href="array2.url">
                 <img :src="array2.image" alt="" class="imgss" :style="img2">
